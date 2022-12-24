@@ -3,19 +3,21 @@
 // import { setupCounter } from './counter.js'
 
 // import * as d3 from 'd3'
-import * as rita from 'rita'
-import { Graphviz } from "@hpcc-js/wasm/graphviz"
+import * as rita from "rita";
+import { Graphviz } from "@hpcc-js/wasm/graphviz";
 
-const graphviz = await Graphviz.load()
+const graphviz = await Graphviz.load();
 
-document.getElementById('app').innerHTML = `
+document.getElementById("app").innerHTML = `
   <h1>Flow Generator 2</h1>
   <div id="graph"></div>
-`
+`;
 
 const phrase = () => {
-  return `${rita.randomWord({ pos: "prp" })} ${rita.randomWord({ pos: "vbg" })} ${rita.randomWord({ pos: "nns" })}`
-}
+  return `${rita.randomWord({ pos: "prp" })} ${rita.randomWord({
+    pos: "vbg",
+  })} ${rita.randomWord({ pos: "nns" })}`;
+};
 
 const dot = `
   digraph G {
@@ -40,10 +42,10 @@ const dot = `
     g -> h
     h -> a
   }
-`
+`;
 
-const svg = graphviz.circo(dot)
+const svg = graphviz.circo(dot);
 
-document.getElementById('graph').innerHTML = svg
+document.getElementById("graph").innerHTML = svg;
 
 console.log(graphviz.version());
