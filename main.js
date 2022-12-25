@@ -21,8 +21,12 @@ Graphviz.load().then((graphviz) => {
   const dot = `
   digraph G {
     node [shape=box]
-    overlap=prism
-    mindist=0
+
+    mindist = 0
+    splines = curved
+    overlap_scaling = -8
+    size = "7,7!"
+
     a[label="${phrase()}"]
     b[label="${rita.randomWord({ pos: "in" })}"]
     c[label="${phrase()}"]
