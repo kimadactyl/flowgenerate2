@@ -1,5 +1,5 @@
 export default {
-  base: './',
+  base: '/flowgenerate2/',
   build: {
     outDir: './docs'
   }
