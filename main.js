@@ -1,4 +1,4 @@
-// import './style.css'
+import './style.css'
 // import javascriptLogo from './javascript.svg'
 // import { setupCounter } from './counter.js'
 
@@ -8,33 +8,39 @@ import { Graphviz } from "@hpcc-js/wasm/graphviz";
 
 Graphviz.load().then((graphviz) => {
   document.getElementById("app").innerHTML = `
-  <h1>Flow Generator 2</h1>
+  <h1>Knot Generator</h1>
+  <p>Based on R.D Laing's <em>Knots (1970)</em>. <a href="#" onClick="window.location.reload();">Generate another?</a></p>
   <div id="graph"></div>
 `;
 
+  const word = (pos) => {
+    return `${rita.randomWord({ pos: pos })}`
+  }
+
   const phrase = () => {
-    return `${rita.randomWord({ pos: "prp" })} ${rita.randomWord({
-      pos: "vbg",
-    })} ${rita.randomWord({ pos: "nns" })}`;
+    return `${word("prp")} ${word("vbg")} ${word("nns")}`
   };
 
   const dot = `
   digraph G {
-    node [shape=box]
-
     mindist = 0
     splines = curved
     overlap_scaling = -8
     size = "7,7!"
+    bgcolor="transparent"
+    
+
+    node [shape=plaintext,fontname="Palatino-Bold"]
+    edge [color="#444444"]
 
     a[label="${phrase()}"]
-    b[label="${rita.randomWord({ pos: "in" })}"]
+    b[label="${word("in")}"]
     c[label="${phrase()}"]
-    d[label="${rita.randomWord({ pos: "in" })}"]
+    d[label="${word("in")}"]
     e[label="${phrase()}"]
-    f[label="${rita.randomWord({ pos: "in" })}"]
+    f[label="${word("in")}"]
     g[label="${phrase()}"]
-    h[label="${rita.randomWord({ pos: "in" })}"]
+    h[label="${word("in")}"]
 
     a -> b
     b -> c
